@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<title> TAREAS ADMINISTRATIVAS Y SEGURIDAD </title>
+			
+	</head>
+	<body id="Fondo">
+	<h1> TAREAS ADMINISTRATIVAS Y SEGURIDAD </h1>
+<br />
+
+<h3> CAMBIO DE CONTRASEÑA </h3>
+	<pre>
+Cualquier usuario puede cambiar su contraseña usando el comando "passwd",
+de la siguiente manera:
+
+	passwd
+
+Tenga en cuenta que el comando no requiere argumentos.
+El administrador puede cambiar la contraseña de cualquier usuario.
+Por ejemplo, supongamos que el administrador tiene que cambiar la contraseña de un usuario cuyo inicio de sesión es lisa.
+Esto se puede lograr escribiendo el siguiente comando:
+
+	passwd lisa
+
+Una cosa interesante es que el sistema operativo obliga a los usuarios habituales a crear contraseñas largas,
+con un mínimo de 5 o 6 caracteres; mientras que el administrador puede crear contraseñas de cualquier longitud.
+Por ejemplo, si un usuario normal intenta crear la contraseña "123",
+el sistema no lo permitirá; pero, el administrador podría hacerlo.
+	</pre>
+<br />
+<h3> CREAR Y ELIMINAR USUARIOS </h3>
+<pre>
+Solo los administradores pueden crear y eliminar cuentas.
+Para crear una cuenta, use el comando "adduser". 
+Por ejemplo, para crear una cuenta cuyo nombre de usuario (login) sea lisa,
+use el comando:
+
+	adduser lisa
+
+Este comando crea automáticamente el directorio de inicio y el grupo del usuario,
+ambos llamados lisa. Además, durante la ejecución del comando,
+el sistema operativo solicitará la introducción de la contraseña que se utilizará para ingresar a la cuenta,
+así como otros datos menos relevantes como: nombre completo del usuario,
+número de teléfono, etc.
+
+Por otro lado, para eliminar una cuenta se utiliza el comando “deluser”. 
+Por ejemplo, para eliminar una cuenta cuyo nombre de usuario (login) es lisa, 
+use el comando:
+
+	deluser lisa
+
+Con este comando se elimina el grupo principal de la cuenta, es decir, el grupo lisa.
+Pero, el directorio de inicio ubicado en el directorio de inicio permanece.
+Para eliminar el directorio de inicio debemos agregar la opción “--remove-home”,
+de la siguiente manera:
+
+	deluser --remove-home lisa
+
+En cualquier caso, el administrador siempre puede eliminar el directorio de inicio de la cuenta mediante el comando:
+
+	rm-r lisa
+</pre>
+<br />
+<h3> CREAR Y ELIMINAR GRUPOS </h3>
+
+<pre>
+Solo los administradores pueden crear y eliminar grupos.
+Para crear un grupo, utilice el comando "groupadd".
+Por ejemplo, para crear un grupo llamado estudiantes usaremos el siguiente comando:
+
+	groupadd estudiantes
+
+Por otro lado, para eliminar grupos se utiliza el comando “groupdel”. 
+Por ejemplo, para eliminar el grupo de estudiantes usaremos el siguiente comando:
+
+	groupdel estudiantes
+</pre>
+<br />
+<h3> AGREGAR Y ELIMINAR USUARIOS A GRUPOS </h3>
+<pre>
+Solo los administradores pueden agregar y eliminar usuarios de los grupos.
+Para hacer que un usuario pertenezca a varios grupos, además del suyo,
+se utiliza el comando "usermod" con las opciones a y G. 
+Por ejemplo, para hacer que el usuario lisa pertenezca a los grupos de profesores y tutores,
+se utilizarán los siguientes comandos usado:
+
+	usermod -aG profesores lisa
+
+	usermod -aG tutores lisa
+
+Estos dos comandos se pueden reducir a uno solo separando los nombres de los grupos con comas:
+
+	usermod -aG profesores, tutores lisa
+
+Tenga en cuenta que no hay espacios en blanco entre los nombres de los grupos y la coma de separación.
+
+Por otro lado, para eliminar un usuario de un grupo el comando "deluser".
+Por ejemplo, para eliminar al usuario cuyo inicio de sesión es lisa del grupo de tutores, use el siguiente comando:
+
+	deluser tutores lisa
+</pre>
+<br />
+<h3> CAMBIAR EL GRUPO DE UN ARCHIVO O DIRECTORIO </h3>
+<pre>
+Por defecto, un archivo o directorio pertenece al grupo del usuario que lo crea.
+Para cambiar al grupo del archivo, use el comando "chgrp".
+Por ejemplo, para hacer que el archivo test.txt pertenezca al grupo de profesores, use el comando:
+
+	chgrp teachers test.txt
+
+Para cambiar el grupo de un directorio y todo su contenido se utiliza la opción R. 
+Por ejemplo:
+
+	chgrp -R teachers test
+
+hace que el directorio de prueba y todo su contenido pertenezcan al grupo de profesores.
+
+</pre>
+
+</body>
+</html>
